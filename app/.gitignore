@@ -19,6 +19,9 @@ out/
 # (Jouk) IDEA
 .idea/
 
+# (Jouk) asciinemas
+*.cast
+
 ### Eclipse ###
 .apt_generated
 .classpath
