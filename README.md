@@ -7,3 +7,6 @@
 ### Asciinemas:
 ##### Game 'Even'
 [![asciicast](https://asciinema.org/a/628773.svg)](https://asciinema.org/a/628773)
+
+##### Game 'Calc'
+[![asciicast](https://asciinema.org/a/1HbRCPvgc2xpWngCBkh98Ry6S.svg)](https://asciinema.org/a/1HbRCPvgc2xpWngCBkh98Ry6S)
