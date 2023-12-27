@@ -1,6 +1,5 @@
 package hexlet.code.games;
 
-import java.util.Scanner;
 import java.util.Random;
 import hexlet.code.Engine;
 
@@ -27,15 +26,17 @@ public class Progression {
         Engine.startGame(gameRules);
 
         Engine.correctAnswersCount = 0;
-        while (Engine.correctAnswersCount < 3) {
+        final int roundsMax = 3;
+        while (Engine.correctAnswersCount < roundsMax) {
 
-            final int PROGRESSION_LENGTH = 10;
+            final int progressionLength = 10;
             Random random = new Random();
-            int first = random.nextInt(10);
-            int step = random.nextInt(10);
-            String[] progression = makeProgression(first, step, PROGRESSION_LENGTH);
+            int randomLimit = 10;
+            int first = random.nextInt(randomLimit);
+            int step = random.nextInt(randomLimit);
+            String[] progression = makeProgression(first, step, progressionLength);
 
-            int hiddenMemberIndex = random.nextInt(10);
+            int hiddenMemberIndex = random.nextInt(randomLimit);
             String correctAnswer = progression[hiddenMemberIndex];
             progression[hiddenMemberIndex] = "..";
             String question = String.join(" ", progression);
