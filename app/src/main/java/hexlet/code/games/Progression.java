@@ -2,9 +2,9 @@ package hexlet.code.games;
 
 import java.util.Scanner;
 import java.util.Random;
+import hexlet.code.Engine;
 
 public class Progression {
-
     public static String[] makeProgression(int first, int step, int PROGRESSION_LENGTH) {
 
         int[] workingArr = new int[PROGRESSION_LENGTH];
@@ -23,44 +23,25 @@ public class Progression {
         return resultArr;
     }
     public static void playProgression() {
-        Scanner scanner = new Scanner(System.in);
-        System.out.println("Welcome to the Brain Games!");
-        System.out.println("May I have your name?");
+        String gameRules = "What number is missing in the progression?";
+        Engine.startGame(gameRules);
 
-        String name = scanner.nextLine();
-
-        System.out.println("Hello, " + name + "!");
-        System.out.println("What number is missing in the progression?");
-
-        int correctAnswersCount = 0;
-        while (correctAnswersCount < 3) {
-
-            Random random = new Random();
+        Engine.correctAnswersCount = 0;
+        while (Engine.correctAnswersCount < 3) {
 
             final int PROGRESSION_LENGTH = 10;
+            Random random = new Random();
             int first = random.nextInt(10);
             int step = random.nextInt(10);
-            int hiddenMemberIndex = random.nextInt(10);
             String[] progression = makeProgression(first, step, PROGRESSION_LENGTH);
-            String correctAnswer = progression[hiddenMemberIndex];
 
+            int hiddenMemberIndex = random.nextInt(10);
+            String correctAnswer = progression[hiddenMemberIndex];
             progression[hiddenMemberIndex] = "..";
             String question = String.join(" ", progression);
 
-            System.out.println("Question: " + question);
-
-            String userAnswer = scanner.nextLine();
-
-            if (userAnswer.equals(correctAnswer)) {
-                System.out.println("Correct!");
-                correctAnswersCount++;
-            } else {
-                System.out.println("'" + userAnswer + "' is wrong answer ;(. Correct answer was '" + correctAnswer + "'.");
-                System.out.println("Let's try again, " + name + "!");
-                return;
-            }
+            Engine.playGame(question, correctAnswer);
         }
-        System.out.println("Congratulations, " + name + "!");
-        scanner.close();
+        System.out.println("Congratulations, " + Engine.name + "!");
     }
 }
