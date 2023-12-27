@@ -1,10 +1,22 @@
-package hexlet.code;
+package hexlet.code.games;
 
 import java.util.Scanner;
 import java.util.Random;
 
-public class Even {
-    public static void playEven() {
+public class Prime {
+    public static String isPrime(int num) {
+        if (num <= 1) {
+            return "no";
+        }
+
+        for (int i = 2; i <= num/2; i++) {
+            if ((num % i) == 0) {
+                return "no";
+            }
+        }
+        return "yes";
+    }
+    public static void playPrime() {
         Scanner scanner = new Scanner(System.in);
         System.out.println("Welcome to the Brain Games!");
         System.out.println("May I have your name?");
@@ -12,7 +24,7 @@ public class Even {
         String name = scanner.nextLine();
 
         System.out.println("Hello, " + name + "!");
-        System.out.println("Answer 'yes' if the number is even, otherwise answer 'no'.");
+        System.out.println("Answer 'yes' if given number is prime. Otherwise answer 'no'.");
 
         int correctAnswersCount = 0;
         while (correctAnswersCount < 3) {
@@ -21,20 +33,14 @@ public class Even {
             int num1 = random.nextInt(100);
             System.out.println("Question: " + num1);
 
-            String correctAnswer1;
-            if (num1 % 2 == 0) {
-                correctAnswer1 = "yes";
-            } else {
-                correctAnswer1 = "no";
-            }
+            String correctAnswer = isPrime(num1);
+            String userAnswer = scanner.nextLine();
 
-            String userAnswer1 = scanner.nextLine();
-
-            if (userAnswer1.equals(correctAnswer1)) {
+            if (userAnswer.equals(correctAnswer)) {
                 System.out.println("Correct!");
                 correctAnswersCount++;
             } else {
-                System.out.println("'" + userAnswer1 + "' is wrong answer ;(. Correct answer was '" + correctAnswer1 + "'.");
+                System.out.println("'" + userAnswer + "' is wrong answer ;(. Correct answer was '" + correctAnswer + "'.");
                 System.out.println("Let's try again, " + name + "!");
                 return;
             }

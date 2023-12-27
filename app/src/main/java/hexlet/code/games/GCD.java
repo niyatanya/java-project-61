@@ -1,22 +1,10 @@
-package hexlet.code;
+package hexlet.code.games;
 
 import java.util.Scanner;
 import java.util.Random;
 
-public class Prime {
-    public static String isPrime(int num) {
-        if (num <= 1) {
-            return "no";
-        }
-
-        for (int i = 2; i <= num/2; i++) {
-            if ((num % i) == 0) {
-                return "no";
-            }
-        }
-        return "yes";
-    }
-    public static void playPrime() {
+public class GCD {
+    public static void playGCD() {
         Scanner scanner = new Scanner(System.in);
         System.out.println("Welcome to the Brain Games!");
         System.out.println("May I have your name?");
@@ -24,19 +12,26 @@ public class Prime {
         String name = scanner.nextLine();
 
         System.out.println("Hello, " + name + "!");
-        System.out.println("Answer 'yes' if given number is prime. Otherwise answer 'no'.");
+        System.out.println("Find the greatest common divisor of given numbers");
 
         int correctAnswersCount = 0;
         while (correctAnswersCount < 3) {
 
             Random random = new Random();
             int num1 = random.nextInt(100);
-            System.out.println("Question: " + num1);
+            int num2 = random.nextInt(100);
+            System.out.println("Question: " + num1 + " " + num2);
 
-            String correctAnswer = isPrime(num1);
-            String userAnswer = scanner.nextLine();
+            int correctAnswer = 0;
+            for (int i = 1; i <= num1 && i <= num2; i++) {
+                if (num1 % i == 0 && num2 % i == 0) {
+                    correctAnswer = i;
+                }
+            }
 
-            if (userAnswer.equals(correctAnswer)) {
+            int userAnswer = scanner.nextInt();
+
+            if (userAnswer == correctAnswer) {
                 System.out.println("Correct!");
                 correctAnswersCount++;
             } else {

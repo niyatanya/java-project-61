@@ -1,10 +1,10 @@
-package hexlet.code;
+package hexlet.code.games;
 
 import java.util.Scanner;
 import java.util.Random;
 
-public class GCD {
-    public static void playGCD() {
+public class Even {
+    public static void playEven() {
         Scanner scanner = new Scanner(System.in);
         System.out.println("Welcome to the Brain Games!");
         System.out.println("May I have your name?");
@@ -12,30 +12,29 @@ public class GCD {
         String name = scanner.nextLine();
 
         System.out.println("Hello, " + name + "!");
-        System.out.println("Find the greatest common divisor of given numbers");
+        System.out.println("Answer 'yes' if the number is even, otherwise answer 'no'.");
 
         int correctAnswersCount = 0;
         while (correctAnswersCount < 3) {
 
             Random random = new Random();
             int num1 = random.nextInt(100);
-            int num2 = random.nextInt(100);
-            System.out.println("Question: " + num1 + " " + num2);
+            System.out.println("Question: " + num1);
 
-            int correctAnswer = 0;
-            for (int i = 1; i <= num1 && i <= num2; i++) {
-                if (num1 % i == 0 && num2 % i == 0) {
-                    correctAnswer = i;
-                }
+            String correctAnswer1;
+            if (num1 % 2 == 0) {
+                correctAnswer1 = "yes";
+            } else {
+                correctAnswer1 = "no";
             }
 
-            int userAnswer = scanner.nextInt();
+            String userAnswer1 = scanner.nextLine();
 
-            if (userAnswer == correctAnswer) {
+            if (userAnswer1.equals(correctAnswer1)) {
                 System.out.println("Correct!");
                 correctAnswersCount++;
             } else {
-                System.out.println("'" + userAnswer + "' is wrong answer ;(. Correct answer was '" + correctAnswer + "'.");
+                System.out.println("'" + userAnswer1 + "' is wrong answer ;(. Correct answer was '" + correctAnswer1 + "'.");
                 System.out.println("Let's try again, " + name + "!");
                 return;
             }
