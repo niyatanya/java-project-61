@@ -12,7 +12,7 @@ public class GCD {
         String name = scanner.nextLine();
 
         System.out.println("Hello, " + name + "!");
-        System.out.println("Find the greatest common divisor of given numbers");
+        System.out.println("Find the greatest common divisor of given numbers.");
 
         int correctAnswersCount = 0;
         while (correctAnswersCount < 3) {
