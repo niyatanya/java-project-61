@@ -17,8 +17,8 @@ class App {
         System.out.println("6 - Prime");
         System.out.println("0 - Exit");
 
-        Scanner scanner1 = new Scanner(System.in);
-        int userChoice = scanner1.nextInt();
+        Scanner scanner = new Scanner(System.in);
+        int userChoice = scanner.nextInt();
 
         System.out.println("Your choice: " + userChoice);
         switch (userChoice) {
@@ -46,6 +46,6 @@ class App {
                 System.out.println("Sorry! No such choice. Please start again.");
                 break;
         }
-        scanner1.close();
+        scanner.close();
     }
 }

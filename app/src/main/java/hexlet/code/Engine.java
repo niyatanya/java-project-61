@@ -3,8 +3,16 @@ package hexlet.code;
 import java.util.Scanner;
 
 public class Engine {
-    public static String name;
+    private static String name;
     public static int correctAnswersCount;
+
+    public static String getName() {
+        return name;
+    }
+    public static int getCorrectAnswersCount() {
+        return correctAnswersCount;
+    }
+
     public static void startGame(String gameRules) {
         Scanner scanner = new Scanner(System.in);
         System.out.println("Welcome to the Brain Games!");

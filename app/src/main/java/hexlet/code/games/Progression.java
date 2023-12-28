@@ -4,13 +4,13 @@ import java.util.Random;
 import hexlet.code.Engine;
 
 public class Progression {
-    public static String[] makeProgression(int first, int step, int PROGRESSION_LENGTH) {
+    public static String[] makeProgression(int first, int step, int progressionLength) {
 
-        int[] workingArr = new int[PROGRESSION_LENGTH];
+        int[] workingArr = new int[progressionLength];
         workingArr[0] = first;
         int sum = first;
 
-        for (var i = 1; i < PROGRESSION_LENGTH; i++) {
+        for (var i = 1; i < progressionLength; i++) {
             workingArr[i] = sum + step;
             sum += step;
         }
@@ -25,9 +25,8 @@ public class Progression {
         String gameRules = "What number is missing in the progression?";
         Engine.startGame(gameRules);
 
-        Engine.correctAnswersCount = 0;
         final int roundsMax = 3;
-        while (Engine.correctAnswersCount < roundsMax) {
+        while (Engine.getCorrectAnswersCount() < roundsMax) {
 
             final int progressionLength = 10;
             Random random = new Random();
@@ -43,6 +42,6 @@ public class Progression {
 
             Engine.playGame(question, correctAnswer);
         }
-        System.out.println("Congratulations, " + Engine.name + "!");
+        System.out.println("Congratulations, " + Engine.getName() + "!");
     }
 }

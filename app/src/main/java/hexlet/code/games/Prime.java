@@ -1,6 +1,6 @@
 package hexlet.code.games;
 
-import java.util.Scanner;
+import hexlet.code.Engine;
 import java.util.Random;
 
 public class Prime {
@@ -9,7 +9,7 @@ public class Prime {
             return "no";
         }
 
-        for (int i = 2; i <= num/2; i++) {
+        for (int i = 2; i <= num / 2; i++) {
             if ((num % i) == 0) {
                 return "no";
             }
@@ -17,35 +17,19 @@ public class Prime {
         return "yes";
     }
     public static void playPrime() {
-        Scanner scanner = new Scanner(System.in);
-        System.out.println("Welcome to the Brain Games!");
-        System.out.println("May I have your name?");
+        String gameRules = "Answer 'yes' if given number is prime. Otherwise answer 'no'.";
+        Engine.startGame(gameRules);
 
-        String name = scanner.nextLine();
-
-        System.out.println("Hello, " + name + "!");
-        System.out.println("Answer 'yes' if given number is prime. Otherwise answer 'no'.");
-
-        int correctAnswersCount = 0;
-        while (correctAnswersCount < 3) {
-
+        final int roundsMax = 3;
+        while (Engine.getCorrectAnswersCount() < roundsMax) {
             Random random = new Random();
-            int num1 = random.nextInt(100);
-            System.out.println("Question: " + num1);
+            int randomLimit = 100;
+            int num = random.nextInt(randomLimit);
+            String correctAnswer = isPrime(num);
+            String question = String.valueOf(num);
 
-            String correctAnswer = isPrime(num1);
-            String userAnswer = scanner.nextLine();
-
-            if (userAnswer.equals(correctAnswer)) {
-                System.out.println("Correct!");
-                correctAnswersCount++;
-            } else {
-                System.out.println("'" + userAnswer + "' is wrong answer ;(. Correct answer was '" + correctAnswer + "'.");
-                System.out.println("Let's try again, " + name + "!");
-                return;
-            }
+            Engine.playGame(question, correctAnswer);
         }
-        System.out.println("Congratulations, " + name + "!");
-        scanner.close();
+        System.out.println("Congratulations, " + Engine.getName() + "!");
     }
 }
