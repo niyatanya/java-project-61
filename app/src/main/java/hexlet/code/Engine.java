@@ -4,7 +4,7 @@ import java.util.Scanner;
 
 public class Engine {
     private static String name;
-    public static int correctAnswersCount;
+    private static int correctAnswersCount;
 
     public static String getName() {
         return name;
