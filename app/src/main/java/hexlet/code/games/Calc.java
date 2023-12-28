@@ -5,16 +5,16 @@ import java.util.Random;
 
 public class Calc {
     public static void playCalc() {
-        String gameRules = "What is the result of the expression?";
-        Engine.startGame(gameRules);
+        String description = "What is the result of the expression?";
+        final int gameParametersNum = 2;
+        String[][] roundsData = new String[Engine.ROUNDS][gameParametersNum];
+        Random random = new Random();
+        final int randomLimit = 100;
 
-        final int roundsMax = 3;
-        while (Engine.getCorrectAnswersCount() < roundsMax) {
-
-            Random random = new Random();
-            int randomLimit = 100;
+        for (var i = 0; i < roundsData.length; i++) {
             int num1 = random.nextInt(randomLimit);
-            char operator = "+-*".charAt((new Random()).nextInt(3));
+            final int operatorLimit = 3;
+            char operator = "+-*".charAt((new Random()).nextInt(operatorLimit));
             int num2 = random.nextInt(randomLimit);
 
             int correctAnswerInt = 0;
@@ -32,10 +32,11 @@ public class Calc {
                     System.out.println("Incorrect operator");
             }
             String correctAnswer = String.valueOf(correctAnswerInt);
-            String question = num1 + " " + operator + " " + num2;
+            roundsData[i][1] = correctAnswer;
 
-            Engine.playGame(question, correctAnswer);
+            String question = num1 + " " + operator + " " + num2;
+            roundsData[i][0] = question;
         }
-        System.out.println("Congratulations, " + Engine.getName() + "!");
+        Engine.runGame(description, roundsData);
     }
 }

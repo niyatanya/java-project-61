@@ -18,29 +18,29 @@ class App {
         System.out.println("0 - Exit");
 
         Scanner scanner = new Scanner(System.in);
-        int userChoice = scanner.nextInt();
+        String userChoice = scanner.nextLine();
 
         System.out.println("Your choice: " + userChoice);
         switch (userChoice) {
-            case 1:
+            case "1":
                 Cli.greeting();
                 break;
-            case 2:
+            case "2":
                 Even.playEven();
                 break;
-            case 3:
+            case "3":
                 Calc.playCalc();
                 break;
-            case 4:
+            case "4":
                 GCD.playGCD();
                 break;
-            case 5:
+            case "5":
                 Progression.playProgression();
                 break;
-            case 6:
+            case "6":
                 Prime.playPrime();
                 break;
-            case 0:
+            case "0":
                 break;
             default:
                 System.out.println("Sorry! No such choice. Please start again.");

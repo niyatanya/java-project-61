@@ -17,19 +17,19 @@ public class Prime {
         return "yes";
     }
     public static void playPrime() {
-        String gameRules = "Answer 'yes' if given number is prime. Otherwise answer 'no'.";
-        Engine.startGame(gameRules);
+        String description = "Answer 'yes' if given number is prime. Otherwise answer 'no'.";
+        final int gameParametersNum = 2;
+        String[][] roundsData = new String[Engine.ROUNDS][gameParametersNum];
+        Random random = new Random();
+        final int randomLimit = 100;
 
-        final int roundsMax = 3;
-        while (Engine.getCorrectAnswersCount() < roundsMax) {
-            Random random = new Random();
-            int randomLimit = 100;
+        for (var i = 0; i < roundsData.length; i++) {
             int num = random.nextInt(randomLimit);
             String correctAnswer = isPrime(num);
+            roundsData[i][1] = correctAnswer;
             String question = String.valueOf(num);
-
-            Engine.playGame(question, correctAnswer);
+            roundsData[i][0] = question;
         }
-        System.out.println("Congratulations, " + Engine.getName() + "!");
+        Engine.runGame(description, roundsData);
     }
 }

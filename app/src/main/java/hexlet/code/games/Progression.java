@@ -22,26 +22,25 @@ public class Progression {
         return resultArr;
     }
     public static void playProgression() {
-        String gameRules = "What number is missing in the progression?";
-        Engine.startGame(gameRules);
+        String description = "What number is missing in the progression?";
+        final int gameParametersNum = 2;
+        String[][] roundsData = new String[Engine.ROUNDS][gameParametersNum];
+        Random random = new Random();
+        final int progressionLength = 10;
+        final int randomLimit = 10;
 
-        final int roundsMax = 3;
-        while (Engine.getCorrectAnswersCount() < roundsMax) {
-
-            final int progressionLength = 10;
-            Random random = new Random();
-            int randomLimit = 10;
+        for (var i = 0; i < roundsData.length; i++) {
             int first = random.nextInt(randomLimit);
             int step = random.nextInt(randomLimit);
             String[] progression = makeProgression(first, step, progressionLength);
-
             int hiddenMemberIndex = random.nextInt(randomLimit);
             String correctAnswer = progression[hiddenMemberIndex];
+            roundsData[i][1] = correctAnswer;
+
             progression[hiddenMemberIndex] = "..";
             String question = String.join(" ", progression);
-
-            Engine.playGame(question, correctAnswer);
+            roundsData[i][0] = question;
         }
-        System.out.println("Congratulations, " + Engine.getName() + "!");
+        Engine.runGame(description, roundsData);
     }
 }
