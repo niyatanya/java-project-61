@@ -19,7 +19,7 @@ public class Progression {
             int first = random.nextInt(RANDOM_LIMIT);
             int step = random.nextInt(RANDOM_LIMIT);
             String[] progression = makeProgression(first, step, PROGRESSION_LENGTH);
-            int hiddenMemberIndex = random.nextInt(RANDOM_LIMIT);
+            int hiddenMemberIndex = random.nextInt(PROGRESSION_LENGTH);
             String correctAnswer = progression[hiddenMemberIndex];
             roundsData[i][1] = correctAnswer;
 
