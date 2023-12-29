@@ -4,25 +4,27 @@ import hexlet.code.Engine;
 import java.util.Random;
 
 public class Even {
+
+    private static final int GAME_PARAMETERS_NUM = 2;
+    private static final int RANDOM_LIMIT = 100;
+    private static final String DESCRIPTION = "Answer 'yes' if the number is even, otherwise answer 'no'.";
+
     public static void playEven() {
-        String description = "Answer 'yes' if the number is even, otherwise answer 'no'.";
-        final int gameParametersNum = 2;
-        String[][] roundsData = new String[Engine.ROUNDS][gameParametersNum];
+        String[][] roundsData = new String[Engine.ROUNDS][GAME_PARAMETERS_NUM];
         Random random = new Random();
-        final int randomLimit = 100;
 
         for (var i = 0; i < roundsData.length; i++) {
-            int num = random.nextInt(randomLimit);
-            String correctAnswer;
-            if (num % 2 == 0) {
-                correctAnswer = "yes";
-            } else {
-                correctAnswer = "no";
-            }
+            int num = random.nextInt(RANDOM_LIMIT);
+            String correctAnswer = isEven(num) ? "yes" : "no";
             roundsData[i][1] = correctAnswer;
+
             String question = String.valueOf(num);
             roundsData[i][0] = question;
         }
-        Engine.runGame(description, roundsData);
+        Engine.runGame(DESCRIPTION, roundsData);
+    }
+
+    public static boolean isEven(int num) {
+        return num % 2 == 0;
     }
 }
