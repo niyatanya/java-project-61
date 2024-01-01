@@ -17,4 +17,4 @@ make build
 ## Preview
 
 ##### Game 'Progression'
-[![asciicast](https://asciinema.org/a/SZIpCr2Q1LpulSybu4QjqLF9v.svg)](https://asciinema.org/a/SZIpCr2Q1LpulSybu4QjqLF9v)
+[![asciicast](https://asciinema.org/a/629545.svg)](https://asciinema.org/a/629545)
