@@ -1,25 +1,26 @@
 package hexlet.code.games;
 
-import java.util.Random;
 import hexlet.code.Engine;
+import hexlet.code.Utils;
 
 public class Progression {
 
-    private static final int GAME_PARAMETERS_NUM = 2;
-    private static final int RANDOM_LIMIT = 100;
+    private static final int RANDOM_MIN = 1;
+    private static final int RANDOM_MAX = 10;
     private static final int PROGRESSION_LENGTH = 10;
+    private static final int PROGRESSION_MIN = 0;
+    private static final int PROGRESSION_MAX = 9;
 
     private static final String DESCRIPTION = "What number is missing in the progression?";
 
     public static void playProgression() {
-        String[][] roundsData = new String[Engine.ROUNDS][GAME_PARAMETERS_NUM];
-        Random random = new Random();
+        String[][] roundsData = new String[Engine.ROUNDS][Engine.GAME_PARAMETERS_NUM];
 
         for (var i = 0; i < roundsData.length; i++) {
-            int first = random.nextInt(RANDOM_LIMIT);
-            int step = random.nextInt(RANDOM_LIMIT);
+            int first = Utils.generateNumber(RANDOM_MIN, RANDOM_MAX);
+            int step = Utils.generateNumber(RANDOM_MIN, RANDOM_MAX);
             String[] progression = makeProgression(first, step, PROGRESSION_LENGTH);
-            int hiddenMemberIndex = random.nextInt(PROGRESSION_LENGTH);
+            int hiddenMemberIndex = Utils.generateNumber(PROGRESSION_MIN, PROGRESSION_MAX);
             String correctAnswer = progression[hiddenMemberIndex];
             roundsData[i][1] = correctAnswer;
 

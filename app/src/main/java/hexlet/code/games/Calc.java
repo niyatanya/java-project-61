@@ -1,24 +1,24 @@
 package hexlet.code.games;
 
 import hexlet.code.Engine;
-import java.util.Random;
+import hexlet.code.Utils;
 
 public class Calc {
 
-    private static final int GAME_PARAMETERS_NUM = 2;
-    private static final int RANDOM_LIMIT = 100;
-    private static final int OPERATOR_LIMIT = 3;
-
+    private static final int RANDOM_MIN = 1;
+    private static final int RANDOM_MAX = 100;
+    private static final char[] OPERATORS = {'+', '-', '*'};
+    private static final int OPERATOR_MIN = 0;
+    private static final int OPERATOR_MAX = 2;
     private static final String DESCRIPTION = "What is the result of the expression?";
 
     public static void playCalc() {
-        String[][] roundsData = new String[Engine.ROUNDS][GAME_PARAMETERS_NUM];
-        Random random = new Random();
+        String[][] roundsData = new String[Engine.ROUNDS][Engine.GAME_PARAMETERS_NUM];
 
         for (var i = 0; i < roundsData.length; i++) {
-            int num1 = random.nextInt(RANDOM_LIMIT);
-            char operator = "+-*".charAt((new Random()).nextInt(OPERATOR_LIMIT));
-            int num2 = random.nextInt(RANDOM_LIMIT);
+            int num1 = Utils.generateNumber(RANDOM_MIN, RANDOM_MAX);
+            char operator = OPERATORS[Utils.generateNumber(OPERATOR_MIN, OPERATOR_MAX)];
+            int num2 = Utils.generateNumber(RANDOM_MIN, RANDOM_MAX);
 
             String correctAnswer = String.valueOf(calculate(num1, num2, operator));
             roundsData[i][1] = correctAnswer;

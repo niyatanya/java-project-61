@@ -4,6 +4,7 @@ import java.util.Scanner;
 
 public class Engine {
     public static final int ROUNDS = 3;
+    public static final int GAME_PARAMETERS_NUM = 2;
 
     public static void runGame(String description, String[][] roundsData) {
         Scanner scanner = new Scanner(System.in);
